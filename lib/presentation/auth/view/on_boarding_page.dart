@@ -2,6 +2,8 @@ import 'package:edu_project/core/constants/app_consts.dart';
 import 'package:edu_project/core/constants/text_style.dart';
 import 'package:flutter/material.dart';
 
+import '../../widgets/row_button.dart';
+
 class OnBoardingPage extends StatefulWidget {
   const OnBoardingPage({super.key});
 
@@ -70,84 +72,63 @@ class _OnBoardingPageState extends State<OnBoardingPage>
               scrollDirection: Axis.horizontal,
               children: [_pages[_currentPageIndex]]),
           Positioned(
-              bottom: 0,
-              child: Container(
-                padding: EdgeInsets.all(20),
-                height: MediaQuery.of(context).size.height * .4,
-                width: MediaQuery.of(context).size.width,
-                decoration: BoxDecoration(color: Colors.white, boxShadow: [
-                  BoxShadow(
-                      offset: Offset(0, -40),
-                      color: Colors.white,
-                      blurRadius: 30)
-                ]),
-                child: Column(
-                  spacing: 20,
-                  children: [
-                    Text(
+            bottom: 0,
+            child: Container(
+              padding: EdgeInsets.all(20),
+              height: MediaQuery.of(context).size.height * .4,
+              width: MediaQuery.of(context).size.width,
+              decoration: BoxDecoration(color: Colors.white, boxShadow: [
+                BoxShadow(
+                    offset: Offset(0, -40), color: Colors.white, blurRadius: 30)
+              ]),
+              child: Column(
+                spacing: 20,
+                children: [
+                  Text(
+                    textAlign: TextAlign.center,
+                    "Seamless \nDonation Process",
+                    style: CustomTextStyle.h1,
+                  ),
+                  Text(
                       textAlign: TextAlign.center,
-                      "Seamless \nDonation Process",
-                      style: CustomTextStyle.h1,
-                    ),
-                    Text(
-                        textAlign: TextAlign.center,
-                        "Streamlined donation process is essential for  Lumio. Users should be able to easily make a donation with just a few clicks"),
-                    Spacer(),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        IconButton(
-                            style: ButtonStyle(
-                                fixedSize: WidgetStatePropertyAll(Size(50, 50)),
-                                backgroundColor: WidgetStatePropertyAll(
-                                    AppConsts.primaryColor)),
-                            onPressed: () {
-                              if (_currentPageIndex > 0&&_currentPageIndex!=0) {
-                                setState(() {
-                                  _currentPageIndex--;
-                                });
-                              }
-                            },
-                            icon: Icon(
-                              Icons.arrow_back,
-                              color: Colors.white,
-                            )),
-                        ElevatedButton(
-                            style: ElevatedButton.styleFrom(
-                                fixedSize: Size(250, 50),
-                                backgroundColor: AppConsts.primaryColor),
-                            onPressed: () {
-                              if (_currentPageIndex >= 0 &&
-                                  _currentPageIndex < 3) {
-                                setState(() {
-                                  _currentPageIndex++;
-                                });
-                              }
-                            },
-                            child: Text(
-                              _currentPageIndex != 2
-                                  ? "Next"
-                                  : "Drive Forward to the Checkout!",
-                              style: TextStyle(color: Colors.white),
-                            ))
-                      ],
-                    )
-                  ],
-                ),
-              )),
+                      "Streamlined donation process is essential for  Lumio. Users should be able to easily make a donation with just a few clicks"),
+                  Spacer(),
+                  RowButton(
+                    onPressedicon: () {
+                      if (_currentPageIndex > 0 && _currentPageIndex != 0) {
+                        setState(() {
+                          _currentPageIndex--;
+                        });
+                      }
+                    },
+                    onPressed: () {
+                      if (_currentPageIndex >= 0 && _currentPageIndex < 3) {
+                        setState(() {
+                          _currentPageIndex++;
+                        });
+                      }
+                    },
+                    title: _currentPageIndex != 2
+                        ? "Next"
+                        : "Drive Forward to the Checkout!",
+                  )
+                ],
+              ),
+            ),
+          ),
           Positioned(
-              top: 70,
-              child: Container(
-                margin: EdgeInsets.symmetric(horizontal: 20),
-                width: MediaQuery.of(context).size.width * .9,
-                child: LinearProgressIndicator(
-                  minHeight: 4,
-                  borderRadius: BorderRadius.circular(10),
-                  valueColor: AlwaysStoppedAnimation(AppConsts.primaryColor),
-                  value: _currentPageIndex / _pages.length,
-                  backgroundColor: AppConsts.bgcolor,
-                ),
-              ))
+            top: 70,right: 20,
+            child: SizedBox(
+              width: 320,
+              child: LinearProgressIndicator(
+                minHeight: 4,
+                borderRadius: BorderRadius.circular(10),
+                valueColor: AlwaysStoppedAnimation(AppConsts.primaryColor),
+                value: _currentPageIndex / _pages.length,
+                backgroundColor: AppConsts.bgcolor,
+              ),
+            ),
+          ),
         ],
       ),
     );
