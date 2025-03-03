@@ -19,17 +19,17 @@ class _OnBoardingPageState extends State<OnBoardingPage>
 
   final List<Widget> _pages = [
     Image.asset(
-      "assets/images/phone.png",
+      "assets/images/onboarding1.png",
       width: 300,
       height: 500,
     ),
     Image.asset(
-      "assets/images/phone.png",
+      "assets/images/onboarding2.png",
       width: 300,
       height: 500,
     ),
     Image.asset(
-      "assets/images/phone.png",
+      "assets/images/onboarding3.png",
       width: 300,
       height: 500,
     ),
@@ -57,20 +57,23 @@ class _OnBoardingPageState extends State<OnBoardingPage>
         children: [
           Container(
             decoration: BoxDecoration(
-                image: DecorationImage(
-                    fit: BoxFit.cover,
-                    image: AssetImage("assets/images/fon.png"))),
+              image: DecorationImage(
+                fit: BoxFit.cover,
+                image: AssetImage("assets/images/fon.png"),
+              ),
+            ),
           ),
           PageView(
-              controller: _pageViewController,
-              onPageChanged: (index) {
-                setState(() {
-                  _currentPageIndex = index;
-                });
-              },
-              physics: NeverScrollableScrollPhysics(),
-              scrollDirection: Axis.horizontal,
-              children: [_pages[_currentPageIndex]]),
+            controller: _pageViewController,
+            onPageChanged: (index) {
+              setState(() {
+                _currentPageIndex = index;
+              });
+            },
+            physics: NeverScrollableScrollPhysics(),
+            scrollDirection: Axis.horizontal,
+            children: [_pages[_currentPageIndex]],
+          ),
           Positioned(
             bottom: 0,
             child: Container(
@@ -117,14 +120,17 @@ class _OnBoardingPageState extends State<OnBoardingPage>
             ),
           ),
           Positioned(
-            top: 70,right: 20,
+            top: 70,
+            right: 20,
             child: SizedBox(
               width: 320,
               child: LinearProgressIndicator(
                 minHeight: 4,
                 borderRadius: BorderRadius.circular(10),
                 valueColor: AlwaysStoppedAnimation(AppConsts.primaryColor),
-                value: _currentPageIndex / _pages.length,
+                value: _currentPageIndex == 0
+                    ? 0.33
+                    : (_currentPageIndex == 1 ? 0.66 : 1.0),
                 backgroundColor: AppConsts.bgcolor,
               ),
             ),
