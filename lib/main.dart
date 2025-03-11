@@ -1,3 +1,4 @@
+import 'package:edu_project/quiz.dart';
 import 'package:edu_project/todolist.dart';
 import 'package:flutter/material.dart';
 
@@ -19,7 +20,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: OnBoardingPage(),
+      home: QuizScreen(),
     );
   }
 }
