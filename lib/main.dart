@@ -1,5 +1,7 @@
-import 'package:edu_project/quiz.dart';
-import 'package:edu_project/todolist.dart';
+
+
+import 'package:edu_project/presentation/auth/view/login_page.dart';
+
 import 'package:flutter/material.dart';
 
 import 'presentation/auth/view/frist_page.dart';
@@ -19,8 +21,11 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
-      ),
-      home: QuizScreen(),
+
+      
+
+      home: LoginPage(),
+
     );
   }
 }
