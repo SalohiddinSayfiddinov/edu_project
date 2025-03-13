@@ -1,4 +1,5 @@
 
+import 'package:edu_project/result.dart';
 import 'package:flutter/material.dart';
 
 class QuizScreen extends StatefulWidget {
@@ -23,12 +24,22 @@ class _QuizScreenState extends State<QuizScreen> {
     {
       "question": "Which sport uses this field?",
       "answers": ["Football", "Basketball", "Tennis", "Shuttlecock"],
-      "correctIndex": 1
+      "correctIndex": 0
     },
     {
       "question": "Identify the sport based on the field.",
       "answers": ["Football", "Basketball", "Tennis", "Shuttlecock"],
-      "correctIndex": 2
+      "correctIndex": 0
+    },
+      {
+      "question": "Identify the sport based on the field.",
+      "answers": ["Football", "Basketball", "Tennis", "Shuttlecock"],
+      "correctIndex": 0
+    },
+      {
+      "question": "Identify the sport based on the field.",
+      "answers": ["Football", "Basketball", "Tennis", "Shuttlecock"],
+      "correctIndex": 0
     },
   ];
 
@@ -56,7 +67,7 @@ class _QuizScreenState extends State<QuizScreen> {
         context,
         MaterialPageRoute(
           builder: (context) =>
-              ResultScreen(score: correctAnswers, total: questions.length),
+              ResultScreen(scorePercent: 100,),
         ),
       );
     }
@@ -157,64 +168,3 @@ child: Text(
   }
 }
 
-class ResultScreen extends StatelessWidget {
-  final int score;
-  final int total;
-
-  const ResultScreen({super.key, required this.score, required this.total});
-
-  @override
-  Widget build(BuildContext context) {
-    double percentage = (score / total) * 100;
-    IconData arrowIcon;
-    Color arrowColor;
-
-    if (percentage >= 50) {
-      arrowIcon = Icons.arrow_upward;
-      arrowColor = Colors.green;
-    } else {
-      arrowIcon = Icons.arrow_downward;
-      arrowColor = Colors.red;
-    }
-
-    return Scaffold(
-      backgroundColor: const Color(0xFFFFF8E6),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Icon(
-              arrowIcon,
-              color: arrowColor,
-              size: 80,
-            ),
-            const SizedBox(height: 16),
-            Text(
-              percentage >= 50 ? "Great job!" : "Maybe next time",
-              style: const TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
-            ),
-            Text(
-              "$score / $total correct answers",
-              style: const TextStyle(fontSize: 18, color: Colors.black54),
-            ),
-            const SizedBox(height: 20),
-            ElevatedButton(
-              onPressed: () {
-                Navigator.pushReplacement(
-                  context,
-                  MaterialPageRoute(builder: (context) => const QuizScreen()),
-                );
-              },
-              style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.green,
-                padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 12),
-              ),
-              child: const Text("Retry quiz",
-                  style: TextStyle(fontSize: 18, color: Colors.white)),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-}
