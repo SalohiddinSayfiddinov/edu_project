@@ -26,7 +26,7 @@ class RowButton extends StatelessWidget {
             style: ButtonStyle(
                 fixedSize: WidgetStatePropertyAll(Size(50, 50)),
                 backgroundColor:
-                    WidgetStatePropertyAll(color ?? AppConsts.primaryColor)),
+                    WidgetStatePropertyAll( AppConsts.primaryColor)),
             onPressed: onPressedicon,
             icon: Icon(
               Icons.arrow_back,

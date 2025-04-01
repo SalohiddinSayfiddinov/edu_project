@@ -1,18 +1,13 @@
-import 'package:edu_project/habit/home.dart';
-import 'package:edu_project/habit/login.dart';
 
-import 'package:edu_project/homehabi.dart';
-import 'package:edu_project/screens/book_audio.dart';
-import 'package:edu_project/screens/lesson_page_for_payed_customer.dart';
-import 'package:edu_project/tr%C3%A4ningsprov.dart';
-import 'package:edu_project/homescreen.dart';
-import 'package:edu_project/quiz.dart';
-import 'package:edu_project/todolist.dart';
+
 import 'package:flutter/material.dart';
-
+import 'package:flutter/services.dart';
 import 'presentation/auth/view/frist_page.dart';
 
-void main() {
+void main() { SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
+      statusBarColor: Colors.transparent,
+      statusBarBrightness: Brightness.dark,
+      statusBarIconBrightness: Brightness.dark));
   runApp(MyApp());
 }
 
@@ -27,7 +22,10 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: LessonPageForPayedCustomer(),
+
+
+      home: FirstPage(),
+
     );
   }
 }
