@@ -4,13 +4,14 @@ import '../../../core/constants/app_consts.dart';
 
 class MyContainer extends StatefulWidget {
   final Widget child;
-  final VoidCallback onpressed;
+  final double? h;
+  final VoidCallback? onpressed;
   final Color? color;
   const MyContainer({
     super.key,
     required this.child,
-    required this.onpressed,
-    this.color,
+    this.onpressed,
+    this.color, this.h,
   });
 
   @override
@@ -25,7 +26,7 @@ class _MyContainerState extends State<MyContainer> {
       child: Container(
         padding: EdgeInsets.symmetric(horizontal: 16, vertical: 4),
         width: double.infinity,
-        height: 56,
+        height:widget.h?? 56,
         decoration: BoxDecoration(
             border: Border.all(color: widget.color ?? Colors.transparent),
             boxShadow: [

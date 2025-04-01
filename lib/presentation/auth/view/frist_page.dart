@@ -1,11 +1,12 @@
 import 'package:edu_project/core/constants/app_consts.dart';
+import 'package:edu_project/presentation/auth/view/on_boarding_page.dart';
 import 'package:flag/flag_enum.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
 import '../../../core/constants/text_style.dart';
 import '../../widgets/my_button.dart';
-import '../widgets/cheklan.dart';
+import '../widgets/check_language.dart';
 
 class FirstPage extends StatefulWidget {
   const FirstPage({super.key});
@@ -108,12 +109,15 @@ class _FirstPageState extends State<FirstPage> {
                     ),
                     Spacer(),
                     MyButton(
-                      color: get()
+                      color: _get()
                           ? AppConsts.buttonDisabledColor
                           : AppConsts.primaryColor,
-                      textColor: get() ? Colors.black : Colors.white,
+                      textColor: _get() ? Colors.black : Colors.white,
                       title: 'Select',
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.of(context).push(MaterialPageRoute(
+                            builder: (context) => OnBoardingPage()));
+                      },
                     ),
                   ],
                 ),
@@ -126,7 +130,7 @@ class _FirstPageState extends State<FirstPage> {
   }
 }
 
-bool get() {
+bool _get() {
   if (languages.isNotEmpty) {
     return false;
   }
