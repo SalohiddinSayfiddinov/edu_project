@@ -1,4 +1,3 @@
-import 'package:edu_project/presentation/auth/view/login_page.dart';
 import 'package:flutter/material.dart';
 
 import 'presentation/auth/view/frist_page.dart';
