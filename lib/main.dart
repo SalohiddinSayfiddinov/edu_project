@@ -1,9 +1,12 @@
+
 import 'package:flutter/material.dart';
-
+import 'package:flutter/services.dart';
 import 'presentation/auth/view/frist_page.dart';
-import 'presentation/auth/view/on_boarding_page.dart';
 
-void main() {
+void main() { SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
+      statusBarColor: Colors.transparent,
+      statusBarBrightness: Brightness.dark,
+      statusBarIconBrightness: Brightness.dark));
   runApp(MyApp());
 }
 
@@ -18,7 +21,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: LoginPage(),
+      home: FirstPage(),
     );
   }
 }
