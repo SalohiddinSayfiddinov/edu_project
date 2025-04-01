@@ -1,5 +1,6 @@
 import 'package:edu_project/core/constants/app_consts.dart';
 import 'package:edu_project/core/constants/text_style.dart';
+import 'package:edu_project/presentation/auth/view/login_page.dart';
 import 'package:flutter/material.dart';
 
 import '../../widgets/row_button.dart';
@@ -105,10 +106,16 @@ class _OnBoardingPageState extends State<OnBoardingPage>
                       }
                     },
                     onPressed: () {
-                      if (_currentPageIndex >= 0 && _currentPageIndex < 3) {
+                      if ( _currentPageIndex < 2) {
                         setState(() {
                           _currentPageIndex++;
                         });
+                      } else if(_currentPageIndex==2)  {
+                        Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) {
+                            return LoginPage();
+                          },
+                        ));
                       }
                     },
                     title: _currentPageIndex != 2
