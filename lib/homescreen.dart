@@ -1,4 +1,5 @@
 import 'package:edu_project/homehabi.dart';
+import 'package:edu_project/screens/book_audio.dart';
 import 'package:flutter/material.dart';
 import 'package:edu_project/quiz.dart';
 import 'package:edu_project/tr%C3%A4ningsprov.dart';
@@ -17,7 +18,7 @@ class _MainScreenState extends State<MainScreen> {
   final List<Widget> _screens = [
     const HomehabiScreen(),
     const Homescreen(),
-    const Placeholder(),
+ BookAudio(),
     const Placeholder(),
     const Placeholder(),
   ];
