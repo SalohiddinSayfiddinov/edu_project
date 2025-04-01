@@ -42,7 +42,7 @@ class RowButton extends StatelessWidget {
             title,
             style: TextStyle(color: textColor ?? Colors.white),
           ),
-        )
+        ),
       ],
     );
   }

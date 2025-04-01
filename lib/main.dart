@@ -2,6 +2,8 @@ import 'package:edu_project/habit/home.dart';
 import 'package:edu_project/habit/login.dart';
 
 import 'package:edu_project/homehabi.dart';
+import 'package:edu_project/screens/book_audio.dart';
+import 'package:edu_project/screens/lesson_page_for_payed_customer.dart';
 import 'package:edu_project/tr%C3%A4ningsprov.dart';
 import 'package:edu_project/homescreen.dart';
 import 'package:edu_project/quiz.dart';
@@ -25,7 +27,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: HomehabiScreen(),
+      home: LessonPageForPayedCustomer(),
     );
   }
 }
