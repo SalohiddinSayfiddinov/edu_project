@@ -1,4 +1,4 @@
-
+import 'package:edu_project/presentation/widgets/my_button.dart';
 import 'package:edu_project/result.dart';
 import 'package:flutter/material.dart';
 
@@ -31,12 +31,12 @@ class _QuizScreenState extends State<QuizScreen> {
       "answers": ["Football", "Basketball", "Tennis", "Shuttlecock"],
       "correctIndex": 0
     },
-      {
+    {
       "question": "Identify the sport based on the field.",
       "answers": ["Football", "Basketball", "Tennis", "Shuttlecock"],
       "correctIndex": 0
     },
-      {
+    {
       "question": "Identify the sport based on the field.",
       "answers": ["Football", "Basketball", "Tennis", "Shuttlecock"],
       "correctIndex": 0
@@ -66,8 +66,20 @@ class _QuizScreenState extends State<QuizScreen> {
       Navigator.pushReplacement(
         context,
         MaterialPageRoute(
-          builder: (context) =>
-              ResultScreen(scorePercent: 100,),
+          builder: (context) => ResultScreen(
+            scorePercent: ((correctAnswers / questions.length) * 100).toInt(),
+            correctAnswers: correctAnswers,
+            totalQuestions: questions.length,
+            onRestart: () {
+              setState(() {
+                currentQuestionIndex = 0;
+                correctAnswers = 0;
+                selectedAnswer = null;
+                isAnswered = false;
+              });
+              Navigator.pop(context);
+            },
+          ),
         ),
       );
     }
@@ -79,7 +91,6 @@ class _QuizScreenState extends State<QuizScreen> {
       backgroundColor: const Color(0xFFFFF8E6),
       appBar: AppBar(
         backgroundColor: const Color(0xFFFFF8E6),
-        elevation: 2,
         title: const Text("Träningsprov",
             style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold)),
         centerTitle: true,
@@ -107,13 +118,15 @@ class _QuizScreenState extends State<QuizScreen> {
             const SizedBox(height: 16),
             Column(
               children: List.generate(4, (index) {
-                bool isCorrect = index == questions[currentQuestionIndex]["correctIndex"];
+                bool isCorrect =
+                    index == questions[currentQuestionIndex]["correctIndex"];
                 bool isSelected = selectedAnswer == index;
 
                 return InkWell(
                   onTap: () => checkAnswer(index),
                   child: Container(
-                    padding: const EdgeInsets.symmetric(vertical: 14, horizontal: 12),
+                    padding: const EdgeInsets.symmetric(
+                        vertical: 14, horizontal: 12),
                     margin: const EdgeInsets.symmetric(vertical: 6),
                     decoration: BoxDecoration(
                       color: Colors.white,
@@ -128,8 +141,7 @@ class _QuizScreenState extends State<QuizScreen> {
                     child: Row(
                       children: [
                         Expanded(
-
-child: Text(
+                          child: Text(
                             questions[currentQuestionIndex]["answers"][index],
                             style: const TextStyle(fontSize: 16),
                           ),
@@ -146,25 +158,12 @@ child: Text(
               }),
             ),
             const Spacer(),
-            ElevatedButton(
-              onPressed: isAnswered ? nextQuestion : null,
-              style: ElevatedButton.styleFrom(
-                backgroundColor: isAnswered ? Colors.green : Colors.grey,
-                minimumSize: const Size(double.infinity, 50),
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10)),
-              ),
-              child: Text(
-                currentQuestionIndex < questions.length - 1
-                    ? "Nästa fråga"
-                    : "Nästa fråga",
-                style: const TextStyle(fontSize: 16, color: Colors.white),
-              ),
-            ),
+            MyButton(
+                title: 'NastaFraga',
+                onPressed: isAnswered ? nextQuestion : null),
           ],
         ),
       ),
     );
   }
 }
-

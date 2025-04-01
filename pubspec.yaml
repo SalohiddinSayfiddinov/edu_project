@@ -37,8 +37,18 @@ dependencies:
   flutter_svg: ^2.0.17
   flag: ^7.0.0
   percent_indicator: ^4.2.4
+  dio: ^5.8.0+1
 
+
+  json_annotation: ^4.9.0
+  shared_preferences: ^2.5.2
+  fl_chart: ^0.70.2
+
+retrofit: ^4.4.2
 dev_dependencies:
+  json_serializable: ^6.9.4
+  retrofit_generator: ^9.1.9
+  build_runner: ^2.4.15
   flutter_test:
     sdk: flutter
 
