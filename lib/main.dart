@@ -1,5 +1,6 @@
 
 
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'presentation/auth/view/frist_page.dart';
@@ -24,7 +25,9 @@ class MyApp extends StatelessWidget {
       ),
 
 
+
       home: FirstPage(),
+
 
     );
   }
