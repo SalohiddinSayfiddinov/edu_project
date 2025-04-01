@@ -52,7 +52,7 @@ dependencies:
   shared_preferences: ^2.5.2
   fl_chart: ^0.70.2
   bloc: ^9.0.0
-  gap: ^3.0.1
+
   just_audio: ^0.9.46
   chewie: ^1.11.0
   audio_video_progress_bar: ^2.0.3
