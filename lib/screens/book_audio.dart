@@ -16,8 +16,9 @@ bool isPressed = false;
 class _BookAudioState extends State<BookAudio> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(  toolbarHeight: 80, 
+    return Scaffold(backgroundColor: Color(0xffFFF8E6),
+      appBar: AppBar(centerTitle: true,
+          toolbarHeight:isPressed? 100:80, 
           title: isPressed == false
               ? Column(
                   children: [
@@ -45,14 +46,11 @@ class _BookAudioState extends State<BookAudio> {
                 )
               : Column(
                   children: [
-                    Gap(10),
-                    Container(
-                      child: AudioPlayerWidget(audioUrl: "assets/lets-get-loud-and-dance-1.mp3"),
-                    ),
+                   AudioPlayerWidget(audioUrl: "assets/lets-get-loud-and-dance-1.mp3"),
                   ],
                 )),
       body: Padding(
-        padding: const EdgeInsets.only(right: 20, left: 20,top: 20 ),
+        padding: const EdgeInsets.only(right: 20, left: 20,top: 18 ),
         child: Column(
           children: [
             MyRow(
