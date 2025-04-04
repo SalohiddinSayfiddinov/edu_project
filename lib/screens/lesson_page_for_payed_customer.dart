@@ -147,17 +147,16 @@ class _LessonPageForPayedCustomerState extends State<LessonPageForPayedCustomer>
                           ),
                           ListView.builder(
                             itemBuilder: (context, index) {
-                            
-                            
-                            
                               return InkWell(
                                 onTap: () {
                                   showModalBottomSheet(
                                     context: context,
                                     shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.vertical(
-                                          top: Radius.circular(16.0)),
+                                        top: Radius.circular(16.0),
+                                      ),
                                     ),
+                                    scrollControlDisabledMaxHeightRatio: .75 ,
                                     builder: (context) => ReportBottomSheet(),
                                   );
                                 },

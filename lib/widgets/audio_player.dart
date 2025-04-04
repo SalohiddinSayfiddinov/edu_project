@@ -1,8 +1,6 @@
 import 'package:audio_video_progress_bar/audio_video_progress_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:just_audio/just_audio.dart';
-
-
 class AudioPlayerWidget extends StatefulWidget {
   final String audioUrl;
 
@@ -48,11 +46,13 @@ class _AudioPlayerWidgetState extends State<AudioPlayerWidget> {
   }
 
   void _seekForward() {
-    _player.seek(_position + Duration(seconds: 10));
+    final newPosition = _position + Duration(seconds: 10);
+    _player.seek(newPosition < _duration ? newPosition : _duration);
   }
 
   void _seekBackward() {
-    _player.seek(_position - Duration(seconds: 10));
+    final newPosition = _position - Duration(seconds: 10);
+    _player.seek(newPosition > Duration.zero ? newPosition : Duration.zero);
   }
 
   void _seekTo(Duration position) {
@@ -63,7 +63,7 @@ class _AudioPlayerWidgetState extends State<AudioPlayerWidget> {
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-      padding: EdgeInsets.symmetric(horizontal: 33, vertical: 10),
+    
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(30),
@@ -71,17 +71,15 @@ class _AudioPlayerWidgetState extends State<AudioPlayerWidget> {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-        
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            mainAxisSize: MainAxisSize.min,
             children: [
               IconButton(
-                icon: Icon(Icons.arrow_back, size: 24, color: Colors.green),
+                icon: Icon(Icons.arrow_back, size: 27, color: Colors.green),
                 onPressed: () {},
               ),
               IconButton(
-                icon: Icon(Icons.replay_10, size: 24, color: Colors.green),
+                icon: Icon(Icons.replay_10, size: 27, color: Colors.green),
                 onPressed: _seekBackward,
               ),
               StreamBuilder<PlayerState>(
@@ -91,27 +89,36 @@ class _AudioPlayerWidgetState extends State<AudioPlayerWidget> {
                   final playing = playerState?.playing ?? false;
 
                   return IconButton(
-                    icon: Icon(playing ? Icons.pause : Icons.play_arrow, size: 24, color: Colors.green),
+                    icon: Icon(
+                      playing ? Icons.pause : Icons.play_arrow,
+                      size: 27,
+                      color: Colors.green,
+                    ),
                     onPressed: playing ? _player.pause : _player.play,
                   );
                 },
               ),
               IconButton(
-                icon: Icon(Icons.forward_10, size: 24, color: Colors.green),
+                icon: Icon(Icons.forward_10, size: 27, color: Colors.green),
                 onPressed: _seekForward,
               ),
               IconButton(
-                icon: Icon(Icons.close, size: 24, color: Colors.green),
+                icon: Icon(Icons.close, size: 27, color: Colors.green),
                 onPressed: () {},
               ),
             ],
-          ),  ProgressBar(
-            progress: _position,
-            total: _duration,
-            onSeek: _seekTo,
-            baseBarColor: Colors.grey.shade300,
-            progressBarColor: Colors.green,
-            thumbColor: Colors.green,
+          ),
+        
+          SizedBox(
+            width: 230,
+            child: ProgressBar(
+              progress: _position,
+              total: _duration,
+              onSeek: _seekTo,
+              baseBarColor: Colors.grey.shade300,
+              progressBarColor: Colors.green,
+              thumbColor: Colors.green,
+            ),
           ),
         ],
       ),

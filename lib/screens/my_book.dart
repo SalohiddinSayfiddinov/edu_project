@@ -22,36 +22,46 @@ class _MyBookState extends State<MyBook> {
           child: Column(
             children: [
               MyText(title: "The Driving License Book"),
-             Gap(30),
-             MyRow(image: Image.asset("assets/images/Vector (1).png"), myText: MyText(title: "Fordonskännedom"),),
-             Gap(8),
-            SizedBox(height: 300,
-              child: ListView.separated( 
-                shrinkWrap: true,
-                physics: NeverScrollableScrollPhysics(),
-                itemBuilder: (context, index) {
-                return    CheckBoxContainer(title: "Däckbyte");
-              },separatorBuilder: (context, index) {return  Gap(8);
-                
-              },itemCount: 7,
+              Gap(30),
+              MyRow(
+                image: Image.asset("assets/images/Vector (1).png"),
+                myText: MyText(title: "Fordonskännedom"),
               ),
-            ),
-            Gap(12),
-              MyRow(image: Image.asset("assets/images/Vector (1).png"), myText: MyText(title: "Fordonskännedom"),),
-            
               Gap(8),
- SizedBox(height: 180,
-              child: ListView.separated( 
-                shrinkWrap: true,
-                physics: NeverScrollableScrollPhysics(),
-                itemBuilder: (context, index) {
-                return    CheckBoxContainer(title: "Däckbyte");
-              },separatorBuilder: (context, index) {return  Gap(8);
-                },itemCount: 4,
+              SizedBox(
+                height: 300,
+                child: ListView.separated(
+                  shrinkWrap: true,
+                  physics: NeverScrollableScrollPhysics(),
+                  itemBuilder: (context, index) {
+                    return CheckBoxContainer(title: "Däckbyte");
+                  },
+                  separatorBuilder: (context, index) {
+                    return Gap(8);
+                  },
+                  itemCount: 7,
+                ),
               ),
-            ),
-            
-            
+              Gap(12),
+              MyRow(
+                image: Image.asset("assets/images/Vector (1).png"),
+                myText: MyText(title: "Fordonskännedom"),
+              ),
+              Gap(8),
+              SizedBox(
+                height: 180,
+                child: ListView.separated(
+                  shrinkWrap: true,
+                  physics: NeverScrollableScrollPhysics(),
+                  itemBuilder: (context, index) {
+                    return CheckBoxContainer(title: "Däckbyte");
+                  },
+                  separatorBuilder: (context, index) {
+                    return Gap(8);
+                  },
+                  itemCount: 4,
+                ),
+              ),
             ],
           ),
         ),
