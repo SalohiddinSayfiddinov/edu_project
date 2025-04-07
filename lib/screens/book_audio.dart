@@ -16,138 +16,139 @@ bool isPressed = false;
 class _BookAudioState extends State<BookAudio> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(backgroundColor: Color(0xffFFF8E6),
-      appBar: AppBar(centerTitle: true,
-          toolbarHeight:isPressed? 100:80, 
-          title: isPressed == false
-              ? Column(
+    return Scaffold(
+      backgroundColor: Color(0xffFFF8E6),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerTop,
+      floatingActionButton: Container(margin: EdgeInsets.only(top: 20),
+          child: isPressed == false
+              ? Row(
                   children: [
-                    Gap(15),
-                    Row(
-                      children: [
-                        BookAudioButton(
-                            onPressed: () {
-                              Navigator.pop(context);
-                            },
-                            icon: Icon(Icons.chevron_left)),
-                        Spacer(),
-                        MyText(title: "Däckbyte"),
-                        Spacer(),
-                        BookAudioButton(
-                            onPressed: () {
-                              setState(() {
-                                isPressed = true;
-                              });
-                            },
-                            icon: Icon(Icons.headphones))
-                      ],
-                    ),
+                    BookAudioButton(
+                        onPressed: () {
+                        
+                        },
+                        icon: Icon(Icons.chevron_left)),
+                    Spacer(),
+                    MyText(title: "Däckbyte"),
+                    Spacer(),
+                    BookAudioButton(
+                        onPressed: () {
+                          setState(() {
+                            isPressed = true;
+                          });
+                        },
+                        icon: Icon(Icons.headphones))
                   ],
                 )
               : Column(
                   children: [
-                   AudioPlayerWidget(audioUrl: "assets/lets-get-loud-and-dance-1.mp3"),
+                    AudioPlayerWidget(
+                        audioUrl: "assets/lets-get-loud-and-dance-1.mp3"),
                   ],
                 )),
-      body: Padding(
-        padding: const EdgeInsets.only(right: 20, left: 20,top: 18 ),
-        child: Column(
-          children: [
-            MyRow(
-              image: Image.asset("assets/images/Vector (1).png"),
-              myText: MyText(title: "Maecenas convallis orci id elit"),
-            ),
-            Gap(20),
-            Image.asset("assets/images/Asset 2 1.png"),
-            Gap(10),
-            MyText(
-              title:
-                  "Vivamus convallis, mi id rutrum scelerisque, mi mauris pretium elit, quis viverra urna nibh a ante. Duis accumsan viverra efficitur.Integer id vehicula tellus, suscipit semper augue. Mauris nulla lectus, faucibus eget est non, accumsan wake up condimentum risus. Integer ac venenatis felis. Nulla mattis laoreet mattis. Proin at laoreet sem.",
-              fontSize: 12,
-              color: Color(0xff5A6981),
-            ),
-            Gap(10),
-            MyRow(
-              image: Image.asset("assets/images/Group 162564.png"),
-              myText: MyText(title: "Maecenas convallis orci id elit"),
-            ),
-            Gap(5),
-            Row(
-              children: [
-                Icon(
-                  Icons.circle,
-                  size: 5,
-                  color: Color(0xff5A6981),
-                ),
-                Gap(5),
-                MyText(
-                  title: "Class aptent taciti sociosqu ad litora torquent",
-                  fontSize: 12,
-                  color: Color(0xff5A6981),
-                )
-              ],
-            ),
-            Gap(3),
-            Row(
-              children: [
-                Icon(
-                  Icons.circle,
-                  size: 5,
-                  color: Color(0xff5A6981),
-                ),
-                Gap(5),
-                MyText(
-                  title: "accumsan wake up",
-                  fontSize: 12,
-                  color: Color(0xff5A6981),
-                )
-              ],
-            ),
-            Gap(3),
-            Row(
-              children: [
-                Icon(
-                  Icons.circle,
-                  size: 5,
-                  color: Color(0xff5A6981),
-                ),
-                Gap(5),
-                MyText(
-                  title: "Nulla mattis laoreet",
-                  fontSize: 12,
-                  color: Color(0xff5A6981),
-                )
-              ],
-            ),
-            Gap(3),
-            Row(
-              children: [
-                Icon(
-                  Icons.circle,
-                  size: 5,
-                  color: Color(0xff5A6981),
-                ),
-                Gap(3),
-                MyText(
-                  title: "Proin at laoreet sem",
-                  fontSize: 12,
-                  color: Color(0xff5A6981),
-                )
-              ],
-            ),
-            Gap(10),
-            Container(
-              padding: EdgeInsets.all(12),
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(15),
-                      color:isPressed?  Color.fromARGB(249, 209, 88, 197).withAlpha(50):Color(0xffFFEDBA)),
-              child: MyText(
-                title:
-                    "Vivamus convallis, mi id rutrum scelerisque, mi mauris pretium elit, quis viverra urna nibh a ante. Duis accumsan viverra efficitur.Integer id vehicula tellus, suscipit semper augue.",
-                fontSize: 10,
+      body: SingleChildScrollView(
+        child: Padding(
+          padding:isPressed? const EdgeInsets.only(right: 20, left: 20,top: 150 ):const EdgeInsets.only(right: 20, left: 20,top: 150 ),
+          child: Column(
+            children: [
+              MyRow(
+                image: Image.asset("assets/images/Vector (1).png"),
+                myText: MyText(title: "Maecenas convallis orci id elit"),
               ),
-            )
-          ],
+              Gap(20),
+              Image.asset("assets/images/Asset 2 1.png"),
+              Gap(10),
+              MyText(
+                title:
+                    "Vivamus convallis, mi id rutrum scelerisque, mi mauris pretium elit, quis viverra urna nibh a ante. Duis accumsan viverra efficitur.Integer id vehicula tellus, suscipit semper augue. Mauris nulla lectus, faucibus eget est non, accumsan wake up condimentum risus. Integer ac venenatis felis. Nulla mattis laoreet mattis. Proin at laoreet sem.",
+                fontSize: 12,
+                color: Color(0xff5A6981),
+              ),
+              Gap(10),
+              MyRow(
+                image: Image.asset("assets/images/Group 162564.png"),
+                myText: MyText(title: "Maecenas convallis orci id elit"),
+              ),
+              Gap(5),
+              Row(
+                children: [
+                  Icon(
+                    Icons.circle,
+                    size: 5,
+                    color: Color(0xff5A6981),
+                  ),
+                  Gap(5),
+                  MyText(
+                    title: "Class aptent taciti sociosqu ad litora torquent",
+                    fontSize: 12,
+                    color: Color(0xff5A6981),
+                  )
+                ],
+              ),
+              Gap(3),
+              Row(
+                children: [
+                  Icon(
+                    Icons.circle,
+                    size: 5,
+                    color: Color(0xff5A6981),
+                  ),
+                  Gap(5),
+                  MyText(
+                    title: "accumsan wake up",
+                    fontSize: 12,
+                    color: Color(0xff5A6981),
+                  )
+                ],
+              ),
+              Gap(3),
+              Row(
+                children: [
+                  Icon(
+                    Icons.circle,
+                    size: 5,
+                    color: Color(0xff5A6981),
+                  ),
+                  Gap(5),
+                  MyText(
+                    title: "Nulla mattis laoreet",
+                    fontSize: 12,
+                    color: Color(0xff5A6981),
+                  )
+                ],
+              ),
+              Gap(3),
+              Row(
+                children: [
+                  Icon(
+                    Icons.circle,
+                    size: 5,
+                    color: Color(0xff5A6981),
+                  ),
+                  Gap(3),
+                  MyText(
+                    title: "Proin at laoreet sem",
+                    fontSize: 12,
+                    color: Color(0xff5A6981),
+                  )
+                ],
+              ),
+              Gap(10),
+              Container(
+                padding: EdgeInsets.all(12),
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(15),
+                    color: isPressed
+                        ? Color.fromARGB(249, 209, 88, 197).withAlpha(50)
+                        : Color(0xffFFEDBA)),
+                child: MyText(
+                  title:
+                      "Vivamus convallis, mi id rutrum scelerisque, mi mauris pretium elit, quis viverra urna nibh a ante. Duis accumsan viverra efficitur.Integer id vehicula tellus, suscipit semper augue.",
+                  fontSize: 10,
+                ),
+              )
+            ],
+          ),
         ),
       ),
     );

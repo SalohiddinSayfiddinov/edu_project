@@ -2,6 +2,7 @@
 
 
 import 'package:edu_project/screens/book_audio.dart';
+import 'package:edu_project/screens/lesson_page.dart';
 import 'package:edu_project/screens/lesson_page_for_payed_customer.dart';
 import 'package:edu_project/screens/my_book.dart';
 import 'package:flutter/material.dart';
@@ -29,7 +30,7 @@ class MyApp extends StatelessWidget {
 
 
 
-      home: BookAudio(),
+      home: LessonsPage(),
 
 
     );
