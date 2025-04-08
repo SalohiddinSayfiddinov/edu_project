@@ -13,12 +13,12 @@ class Lesson {
   });
 
   factory Lesson.fromJson(Map<String, dynamic> json) {
-    print('Parsing lesson from JSON: $json');  
+    print('Parsing lesson from JSON: $json');
     return _$LessonFromJson(json);
   }
 
   Map<String, dynamic> toJson() {
-    print('Converting lesson to JSON: $this');  
+    print('Converting lesson to JSON: $this');
     return _$LessonToJson(this);
   }
 }
