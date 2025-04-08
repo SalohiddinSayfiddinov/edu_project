@@ -10,7 +10,7 @@ part of 'lesson_api.dart';
 
 class _LessonApi implements LessonApi {
   _LessonApi(this._dio, {this.baseUrl, this.errorLogger}) {
-    baseUrl ??= 'https://1516-90-156-198-203.ngrok-free.app/api/v1/';
+    baseUrl ??= 'https://f51f-90-156-198-203.ngrok-free.app/api/v1';
   }
 
   final Dio _dio;
@@ -20,25 +20,27 @@ class _LessonApi implements LessonApi {
   final ParseErrorLogger? errorLogger;
 
   @override
-  Future<String> getLessons() async {
+  Future<List<Lesson>> getLessons() async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
-    final _options = _setStreamType<String>(
+    final _options = _setStreamType<List<Lesson>>(
       Options(method: 'GET', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
-            '/lessons/',
+            '/lessons/lessons/',
             queryParameters: queryParameters,
             data: _data,
           )
           .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
     );
-    final _result = await _dio.fetch<String>(_options);
-    late String _value;
+    final _result = await _dio.fetch<List<dynamic>>(_options);
+    late List<Lesson> _value;
     try {
-      _value = _result.data!;
+      _value = _result.data!
+          .map((dynamic i) => Lesson.fromJson(i as Map<String, dynamic>))
+          .toList();
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options);
       rethrow;

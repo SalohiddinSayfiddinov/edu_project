@@ -1,6 +1,7 @@
 import 'package:audio_video_progress_bar/audio_video_progress_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:just_audio/just_audio.dart';
+
 class AudioPlayerWidget extends StatefulWidget {
   final String audioUrl;
 
@@ -46,12 +47,15 @@ class _AudioPlayerWidgetState extends State<AudioPlayerWidget> {
   }
 
   void _seekForward() {
-    final newPosition = _position + Duration(seconds: 10);
-    _player.seek(newPosition < _duration ? newPosition : _duration);
+    final current = _player.position;
+    final total = _player.duration ?? Duration.zero;
+    final newPosition = current + Duration(seconds: 10);
+    _player.seek(newPosition < total ? newPosition : total);
   }
 
   void _seekBackward() {
-    final newPosition = _position - Duration(seconds: 10);
+    final current = _player.position;
+    final newPosition = current - Duration(seconds: 10);
     _player.seek(newPosition > Duration.zero ? newPosition : Duration.zero);
   }
 
@@ -61,15 +65,17 @@ class _AudioPlayerWidgetState extends State<AudioPlayerWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(width: double.infinity,
-       decoration: BoxDecoration(
+    return Container(
+      width: double.infinity,
+      decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(30),
       ),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Row(mainAxisSize: MainAxisSize.min,
+          Row(
+            mainAxisSize: MainAxisSize.min,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               IconButton(
@@ -106,7 +112,6 @@ class _AudioPlayerWidgetState extends State<AudioPlayerWidget> {
               ),
             ],
           ),
-        
           SizedBox(
             width: 230,
             child: ProgressBar(

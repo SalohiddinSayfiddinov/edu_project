@@ -1,8 +1,8 @@
+import 'package:dio/dio.dart';
+import 'package:edu_project/habit/lesson/dio.dart';
+import 'package:flutter/material.dart';
 import 'package:edu_project/habit/lesson/lesson.dart';
 import 'package:edu_project/habit/lesson/lesson_api.dart';
-import 'package:flutter/material.dart';
-import 'package:dio/dio.dart';
-
 
 class LessonsPage extends StatefulWidget {
   @override
@@ -16,30 +16,32 @@ class _LessonsPageState extends State<LessonsPage> {
   @override
   void initState() {
     super.initState();
-    final dio = Dio(BaseOptions(headers: {
-      'Accept': 'application/json',
-      // 'X-CSRFToken': 'KzT1izmGsah6Fh3sec9Yf3rEQunIDItv9BH9QlQtpNbSmXg67xsmCk2Z1kWuLbwm',
-    }));
+    // Используем синглтон DioClient, созданный ранее:
+    final dio = DioClient().dio;
     lessonApi = LessonApi(dio);
     fetchLessons();
   }
 
-  
-  Future<List<Lesson>> fetchLessons() async {
+  Future<void> fetchLessons() async {
     try {
       print('fetching lessons...');
-      final lessons = await lessonApi.getLessons();
-      print('Fetched lessons: $lessons'); 
-      return [];
+      final fetchedLessons = await lessonApi.getLessons();
+      print('Fetched lessons: $fetchedLessons');
+      setState(() {
+        lessons = fetchedLessons;
+      });
     } on DioException catch (e) {
-      print('Error fetching lessons: ${e.response?.data}'); 
+      print('❌ Dio error message: ${e.message}');
+      print('❌ Dio error type: ${e.type}');
+      print('❌ Dio error response: ${e.response}');
+      print('❌ Dio error request: ${e.requestOptions.uri}');
       rethrow;
-    } on Exception 
-    catch (e) {
-      print('Error fetching lessons: $e'); 
+    } on Exception catch (e) {
+      print('❌ Error fetching lessons: $e');
       rethrow;
     }
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
