@@ -24,7 +24,7 @@ const HomehabiScreen ({super.key});
                 Text('Oybek', style: TextStyle(color: Colors.black)),
                 SizedBox(height: 2),
                
-              ],
+              ],   
             ),
           
           ],
