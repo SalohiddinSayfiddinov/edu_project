@@ -5,9 +5,26 @@ part 'lesson.g.dart';
 @JsonSerializable()
 class Lesson {
   final String id;
+  final DateTime createdAt;
+  final DateTime updatedAt;
   final String title;
-
-  Lesson({
+  final String? video;
+  final String description;
+  final bool isPremium;
+  final int duration;
+  final String? createdBy; 
+  final String? updatedBy;
+  final String? chapter;
+  Lesson(
+    this.createdAt,
+    this.updatedAt,
+    this.video,
+    this.description,
+    this.isPremium,
+    this.duration,
+    this.createdBy,
+    this.updatedBy,
+    this.chapter, {
     required this.id,
     required this.title,
   });

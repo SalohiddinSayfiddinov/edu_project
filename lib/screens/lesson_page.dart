@@ -16,8 +16,8 @@ class _LessonsPageState extends State<LessonsPage> {
   @override
   void initState() {
     super.initState();
-    // Используем синглтон DioClient, созданный ранее:
-    final dio = DioClient().dio;
+   
+    final dio =ApiClient().dio;
     lessonApi = LessonApi(dio);
     fetchLessons();
   }

@@ -1,0 +1,2 @@
+C:/Users/user/Desktop/lesson/adu_project/android/app/.cxx/Debug/j3n4a1e5/x86_64/CMakeFiles/edit_cache.dir
+C:/Users/user/Desktop/lesson/adu_project/android/app/.cxx/Debug/j3n4a1e5/x86_64/CMakeFiles/rebuild_cache.dir
